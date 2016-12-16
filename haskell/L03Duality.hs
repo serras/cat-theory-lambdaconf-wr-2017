@@ -1,9 +1,12 @@
 {-# language MultiParamTypeClasses #-}
-{-# language FlexibleInstances #-}
+{-# language FlexibleInstances, FlexibleContexts #-}
 {-# language PolyKinds, KindSignatures #-}
 {-# language TypeInType #-}
 {-# language TypeFamilies #-}
 {-# language UndecidableInstances #-}
+{-# language RankNTypes #-}
+{-# language AllowAmbiguousTypes #-}
+{-# language ScopedTypeVariables, TypeApplications #-}
 module L03Duality where
 
 import Data.Kind
@@ -24,6 +27,10 @@ instance Category o m => Category o (Dual m) where
   identity = DD identity
   compose (DD x) (DD y) = DD $ compose y x
 
+-- Duality theorem
+-- dual :: (forall o m. Category o m => x) -> (forall o m. Category o (Dual m) => x)
+
+-- Category with products => Dual has coproducts
 instance CategoryWithProducts o m => CategoryWithCoProducts o (Dual m) where
   type CoProduct o (Dual m) = Product o m
   inj1 = DD proj1

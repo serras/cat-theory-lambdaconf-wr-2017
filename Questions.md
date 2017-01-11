@@ -96,8 +96,8 @@ object Op {
 * Using Yoneda, compute the number of functions with the type `(Bool -> a) -> Maybe a` (taken from Bartosz Milewski's  blog)
 * **Advanced**, write the functions witnessing:
   * Yoneda Lemma, that is,
-    * `Functor k => forall b. ((a -> b) -> k b) -> k a`
-    * `Functor k => forall b. k a -> (a -> b) -> k b`
+    * `Functor k => (forall b. (a -> b) -> k b) -> k a`
+    * `Functor k => k a -> (forall b. (a -> b) -> k b)`
   * Each natural transformation `forall x. (c -> x) -> (d -> x)` is given by a function `d -> c`
   * Objects are isomorphic if and only if the corresponding `A -> -` functors are
 
